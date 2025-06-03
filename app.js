@@ -533,7 +533,7 @@ function genroom() {
     return Math.random().toString(36).substring(2, 8).toUpperCase();
 }
 
-server.listen(port, () => {
-    console.log(`example app listening on port ${port}`)
+server.listen(process.env.PORT || 3000, () => { // 3000 yerel geliştirme için fallback
+    console.log(`example app listening on port ${process.env.PORT || 3000}`)
 })
 
