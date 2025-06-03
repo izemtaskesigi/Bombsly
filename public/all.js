@@ -597,7 +597,9 @@ socket.on("gameover", (data) => {
     gameover = true;
     winner = data.winner;
     second = data.second;
+    if(data.third != undefined){
     third = data.third;
+    }
     showView("end");
 })
 socket.on("damagePlayers", (data) => {
