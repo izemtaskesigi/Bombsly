@@ -8,8 +8,10 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/(.*)", 
       "dest": "/app.js" 
     }
-  ]
+  ],
+  "installCommand": "npm install", 
+  "outputDirectory": "public" 
 }
