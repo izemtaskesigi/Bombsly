@@ -401,8 +401,7 @@ io.on('connection', (socket) => {
                 let second = rooms[roomid].stack.pop();
                 io.to(roomid).emit("gameover",{
                     winner: rooms[roomid].activeplayers[winner],
-                    second: rooms[roomid].activeplayers[second],
-                    third: rooms[roomid].activeplayers[second]
+                    second: rooms[roomid].activeplayers[second]
                 });
             }
             else{
