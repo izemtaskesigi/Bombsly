@@ -348,9 +348,9 @@ io.on('connection', (socket) => {
         countdownInterval = setInterval(() => {
             rooms[roomid].remainingTime --;
             rooms[roomid].remainingTime;
-            //console.log("*****************")
-            //console.log(`remainingTime: ${rooms[roomid].remainingTime} id: ${roomid}`)
-            //console.log("*****************")
+            console.log("*****************")
+            console.log(`remainingTime: ${rooms[roomid].remainingTime} id: ${roomid}`)
+            console.log("*****************")
 
             // Geri sayım ekranını güncelle
             //display.textContent = remainingTime;
