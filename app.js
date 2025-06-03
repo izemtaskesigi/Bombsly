@@ -37,6 +37,8 @@ fs.readFile('public/two.txt', 'utf8', (err, data) => {
 
 });
 
+const wordData = fs.readFileSync('public/word.txt', 'utf8');
+const words_ar = new Set(wordData.split('\n').map(w => w.trim().toLowerCase()));
 
 app.use(express.static('public'))
 
