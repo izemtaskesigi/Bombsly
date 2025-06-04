@@ -6,13 +6,7 @@ const socket = io();
 
 const players = {}
 
-const avatarList = [
-    "a1.png",
-    "a2.png",
-    "a3.png",
-    "a4.png"
-];
-/*
+
 const avatarList = [
     "a1.png",
     "a2.png",
@@ -21,8 +15,8 @@ const avatarList = [
     "a5.png",
     "a6.png",
     "a7.png",
+    "a8.png"
 ];
-*/
 const arrow = document.getElementById('arrow');
 const inputarea = document.getElementById("answer");
 const hecebox = document.getElementById("hecekutusu");
