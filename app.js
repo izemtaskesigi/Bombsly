@@ -73,7 +73,7 @@ io.on('connection', (socket) => {
             heceler: {},
             remainingTime: 0,
             randomtimer: 0,
-            bombExploded: false,
+            bombExploded: true,
             health: 2,
             timer: 10,
             elemination: 0,
@@ -187,7 +187,7 @@ io.on('connection', (socket) => {
         const roomid = player.room;
         if (true) {
             rooms[roomid].health  = data.health;
-            rooms[roomid].bombExploded = false;
+            rooms[roomid].bombExploded = true;
             rooms[roomid].gamestate = "started";
             rooms[roomid].timer = data.timer;
             rooms[roomid].health = data.health;
@@ -421,7 +421,7 @@ io.on('connection', (socket) => {
             // Reset game state
             rooms[roomid].remainingTime = 0;
             rooms[roomid].randomtimer = 0;
-            rooms[roomid].bombExploded = false;
+            rooms[roomid].bombExploded = true;
             rooms[roomid].elemination = 0;
             rooms[roomid].second = 0;
             rooms[roomid].winner = 0;
@@ -445,7 +445,7 @@ io.on('connection', (socket) => {
             rooms[roomid].gamestate = "over";
             rooms[roomid].remainingTime = 0;
             rooms[roomid].randomtimer = 0;
-            rooms[roomid].bombExploded = false;
+            rooms[roomid].bombExploded = true;
             rooms[roomid].elemination = 0;
             rooms[roomid].second = 0;
             rooms[roomid].winner = 0;
@@ -487,7 +487,9 @@ io.on('connection', (socket) => {
             randsyllable(roomid);
         }
         io.to(roomid).emit("nextplayer", { index: nextIndex })
-        start_bomb_timer(roomid);
+        if(rooms[roomid].bombExploded == true){
+            start_bomb_timer(roomid);
+        }
     }
     function checkvalid(answer, roomid) {
         if(rooms[roomid].gamestate == "over" || rooms[roomid].gamestate == "waiting"){
