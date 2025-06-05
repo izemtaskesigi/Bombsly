@@ -45,7 +45,8 @@ let entered = false;
 let hece_count = 0;
 let room ;
 let link ;
-
+let randomIndex = -1;
+let prevIndex = -1;
 
 // URL parametrelerini ve session'dan player adını al
 const params = new URLSearchParams(window.location.search);
@@ -82,7 +83,10 @@ function showView(id) {
     handleViewChange(id);
 }
 function setRandomAvatar() {
-    const randomIndex = Math.floor(Math.random() * avatarList.length);
+    while(randomIndex == prevIndex ){
+    randomIndex = Math.floor(Math.random() * avatarList.length);
+    }
+    prevIndex = randomIndex;
     const selectedAvatar = avatarList[randomIndex];
     return selectedAvatar;
 }
@@ -294,7 +298,9 @@ function handleViewChange(view) {
         num2.innerText = "2.";
         num3.innerText = "3.";
         
-        
+        icon3.classList.add("endimg");
+        icon2.classList.add("endimg");
+        icon1.classList.add("endimg");
         
         name3.innerText = third.name;
         icon3.src = "/images/avatars/"+ third.avatar;

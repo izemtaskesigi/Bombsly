@@ -77,7 +77,9 @@ h3 {
 }
 
 
-
+.endimg{
+  border-radius: 50%;
+}
 
 
 #hecekutusu {
@@ -141,7 +143,9 @@ h3 {
 #winner{
   top: -100px;
 }
-
+#third{
+  top: 140px;
+}
 #alan3,
 #alan {
   display: flex;
