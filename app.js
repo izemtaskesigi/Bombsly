@@ -78,11 +78,16 @@ io.on('connection', (socket) => {
             timer: 10,
             elemination: 0,
             activeplayers: {},
-            players:
-            {
+            players: {
                 [socket.id]: players[socket.id]
             },
-            stack: []
+            stack: [],
+            countdownInterval: null,
+            currentIndex: 0,
+            currentAngle: 0,
+            winner: 0,
+            second: 0,
+            third: 0
         }
         socket.join(roomid);
         const player = players[socket.id];
@@ -140,8 +145,8 @@ io.on('connection', (socket) => {
             // Check if room is empty
             if (Object.keys(rooms[roomid].players).length === 0) {
                 console.log(`Room ${roomid} is empty, deleting room...`);
-                if(rooms[roomid].gamestate = "started"){
-                    clearInterval(countdownInterval);
+                if(rooms[roomid].gamestate == "started"){
+                    clearInterval(rooms[roomid].countdownInterval);
                 }
                 rooms[roomid].gamestate = "over";
                 
@@ -197,7 +202,8 @@ io.on('connection', (socket) => {
                 hece_count: 0
             };
             rooms[roomid].stack = [];
-            
+            rooms[roomid].countdownInterval = null;
+
             initialize(roomid);
 
             start_bomb_timer(roomid);
@@ -232,6 +238,7 @@ io.on('connection', (socket) => {
                 hece_count: 0
             };
             rooms[roomid].stack = [];
+            rooms[roomid].countdownInterval = null;
             // Emit restart to all clients in the room
             io.in(roomid).emit("restart");
             console.log("Restart event emitted to room:", roomid);
@@ -246,7 +253,7 @@ io.on('connection', (socket) => {
         if(rooms[roomid].gamestate == "over" || rooms[roomid].gamestate == "waiting"){
             return 0;
         }
-        randsyllable()
+        randsyllable(roomid)
 
         io.to(roomid).emit("picked_hece", { heceler: rooms[roomid].heceler })
     })
@@ -343,12 +350,11 @@ io.on('connection', (socket) => {
         rooms[roomid].bombExploded = false;
 
 
-        countdownInterval = setInterval(() => {
+        rooms[roomid].countdownInterval = setInterval(() => {
             rooms[roomid].remainingTime --;
-            rooms[roomid].remainingTime;
-            console.log("*****************")
-            console.log(`remainingTime: ${rooms[roomid].remainingTime} id: ${roomid}`)
-            console.log("*****************")
+            console.log("***")
+            console.log(`Time: ${rooms[roomid].remainingTime}`)
+            
 
             // Geri sayım ekranını güncelle
             //display.textContent = remainingTime;
@@ -356,13 +362,14 @@ io.on('connection', (socket) => {
             if (rooms[roomid].remainingTime  <= 0 && !rooms[roomid].bombExploded ) {
                 
                 rooms[roomid].bombExploded = true;
-                clearInterval(countdownInterval);
+                clearInterval(rooms[roomid].countdownInterval);
                 console.log("BOMBA PATLADI!");
                 io.to(roomid).emit("exploded");
                  // Call nextplayer first
                 damageplayer(roomid);
                 nextplayer(roomid);   // Then call damageplayer
                 if( rooms[roomid].gamestate == "over"){
+                    clearInterval(rooms[roomid].countdownInterval);
                     return 0;
                 }
             }
@@ -426,6 +433,7 @@ io.on('connection', (socket) => {
                 hece: "",
                 hece_count: 0
             };
+            rooms[roomid].countdownInterval = null;
 
         }   if(rooms[roomid].activeplayers.length - rooms[roomid].elemination  == 0){
             //1.yi bul
@@ -449,7 +457,7 @@ io.on('connection', (socket) => {
                 hece: "",
                 hece_count: 0
             };
-
+            rooms[roomid].countdownInterval = null;
         }
         }
         else {
