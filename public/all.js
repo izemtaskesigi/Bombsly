@@ -294,7 +294,7 @@ function handleViewChange(view) {
         
         const t = document.getElementById("third");
         if(third === undefined){
-            t.style.display = "none";
+            t.style.display = "hidden";
         }
         const icon3 = document.createElement("img");
         const name3 = document.createElement("span");
