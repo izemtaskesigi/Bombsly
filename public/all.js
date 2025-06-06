@@ -301,16 +301,21 @@ function handleViewChange(view) {
         icon3.classList.add("endimg");
         icon2.classList.add("endimg");
         icon1.classList.add("endimg");
-        
+        if(third != undefined){
         name3.innerText = third.name;
         icon3.src = "/images/avatars/"+ third.avatar;
         t.appendChild(num3);
         t.appendChild(icon3)
         t.appendChild(name3)
-        name1.classList.add("playername2")
+        }
+        name1.classList.add("playername2")  
         name2.classList.add("playername2")
+        if(third != undefined){
         name3.classList.add("playername2")
-        
+        }
+        if(third == undefined){
+            t.style.display = "none";
+        }
         const again = document.getElementById("again");
         if (again) {
             again.addEventListener("click", () => {
