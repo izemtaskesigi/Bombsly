@@ -423,9 +423,6 @@ io.on('connection', (socket) => {
             rooms[roomid].randomtimer = 0;
             rooms[roomid].bombExploded = true;
             rooms[roomid].elemination = 0;
-            rooms[roomid].second = 0;
-            rooms[roomid].winner = 0;
-            rooms[roomid].third = 0;
             rooms[roomid].currentIndex = 0;
             rooms[roomid].currentAngle = 0;
             rooms[roomid].activeplayers = {};
@@ -434,6 +431,7 @@ io.on('connection', (socket) => {
                 hece_count: 0
             };
             rooms[roomid].countdownInterval = null;
+            rooms[roomid].stack = [];
 
         }   if(rooms[roomid].activeplayers.length - rooms[roomid].elemination  == 0){
             //1.yi bul
@@ -447,9 +445,6 @@ io.on('connection', (socket) => {
             rooms[roomid].randomtimer = 0;
             rooms[roomid].bombExploded = true;
             rooms[roomid].elemination = 0;
-            rooms[roomid].second = 0;
-            rooms[roomid].winner = 0;
-            rooms[roomid].third = 0;
             rooms[roomid].currentIndex = 0;
             rooms[roomid].currentAngle = 0;
             rooms[roomid].activeplayers = {};
@@ -458,6 +453,7 @@ io.on('connection', (socket) => {
                 hece_count: 0
             };
             rooms[roomid].countdownInterval = null;
+            rooms[roomid].stack = [];
         }
         }
         else {
