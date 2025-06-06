@@ -47,6 +47,9 @@ let room ;
 let link ;
 let randomIndex = -1;
 let prevIndex = -1;
+let third;
+let second;
+let winner;
 
 // URL parametrelerini ve session'dan player adını al
 const params = new URLSearchParams(window.location.search);
