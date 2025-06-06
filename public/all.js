@@ -293,9 +293,7 @@ function handleViewChange(view) {
         s.appendChild(name2)
         
         const t = document.getElementById("third");
-        if(third === undefined){
-            t.style.display = "hidden";
-        }
+        
         const icon3 = document.createElement("img");
         const name3 = document.createElement("span");
         const num3 = document.createElement("span");
@@ -316,7 +314,10 @@ function handleViewChange(view) {
         name1.classList.add("playername2")
         name2.classList.add("playername2")
         name3.classList.add("playername2")
-        
+        if(third == undefined){
+            icon3.src = "/images/a-1.png";
+            name3.innerText = "Bilinmiyor";
+        }
         const again = document.getElementById("again");
         if (again) {
             again.addEventListener("click", () => {
