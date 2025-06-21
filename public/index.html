@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bombsly</title>
+    <link rel="icon" href="/images/image.png" type="image/png">
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff&family=Playpen+Sans+Hebrew:wght@100..800&family=Playpen+Sans:wght@400;500;600;700;800&family=Tagesschrift&display=swap" rel="stylesheet">
+    
+</head>
+
+<body>
+
+
+    <div id="create" class="view active">
+        <div id="alan">
+
+
+
+            <div class="circle">
+                <div class="avatar-wrapper">
+                    <img src="" id="avatar1" class="avatar">
+                    <button class="randomize-btn" title="Randomize Avatar" id="rand1"> <img src="images/rounds.png"
+                            class="imggg"></button>
+                </div>
+
+                <h2 class="title">Bombsly'ye <br> hoşgeldiniz</h2>
+                <div class="pos">
+                    <input type="text" id="pname" name="pname" placeholder="Adınız">
+                </div>
+
+                <br>
+                <button id="submit" type="button" class="buttons"> <img src="images/door.png" class="imggg"> Oda Oluştur
+                </button>
+                <br>
+                <button id="how" type="button" class="buttons"> <img src="images/soru.png" class="imggg"> Nasıl Oynanır?
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div id="join" class="view ">
+        <div id="alan">
+            <div class="circle">
+                <div class="avatar-wrapper">
+                    <img src="" id="avatar2" class="avatar">
+                    <button class="randomize-btn" title="Randomize Avatar" id="rand2"> <img src="images/rounds.png"
+                            class="imggg"></button>
+                </div>
+
+                <h2 class="title">Bombsly'ye <br> hoşgeldiniz</h2>
+                <div class="pos">
+                    <input type="text" id="pname2" name="pname2" placeholder="Adınız">
+                </div>
+
+                <br>
+                <button id="joinb" type="button" class="buttons"> <img src="images/join.png" class="imggg"> Odaya Katıl
+                </button>
+                <br>
+                <button id="how" type="button" class="buttons"> <img src="images/soru.png" class="imggg"> Nasıl Oynanır?
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="team" class="view">
+
+        <div id="alan3">
+            <div class="circle1" id="circle">
+                <div id="circle_content">
+                    <h2> ODA LİNKİ:</h2>
+                    <div id="linkdiv">
+                        <div id="roomlink">https://oyun.link/odax123</div>
+                        <button id="roombutton"><img src="images/link.png" alt=""></button>
+                    </div>
+                    <div id="settings">
+
+                        <div id="player-settings">
+                            <img class="image" src="images/heart.png" alt="">
+                            <span class="span1">Canlar:</span>
+                            <div id="pc-div">
+                                <button id="up-h"><img src="images/up.png" alt=""></button>
+                                <span id="health" class="span2">2</span>
+                                <button id="down-h"><img src="images/down.png" alt=""></button>
+                            </div>
+                        </div>
+
+                        <div id="round-settings">
+
+                            <img class="image" src="images/timer.png" alt="">
+                            <span class="span1">Min Süre:</span>
+
+                            <div id="rc-div">
+
+                                <button id="up-r"><img src="images/up.png" alt=""></button>
+                                <span id="timer" class="span2">10</span>
+                                <button id="down-r"><img src="images/down.png" alt=""></button>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <button id="start" class="start"><img src="images/doubleright.png">Başla</button>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="game" class="view ">
+
+        <div id="alan3">
+            <div class="circle1" id="circle3">
+
+                <span id="hecekutusu"> </span>
+                
+                <div id="bombbox">
+                    <img src="images/bomb.png" id="bomb" />
+                    <img src="images/spinfire.gif" id="fire" />
+                </div>
+               
+                
+                <div id="explosion"></div>  
+
+                <img src="images/arrow.png" id="arrow" class="arrow" />
+
+            </div>
+
+        </div>
+        <div id="answer" class="alan2">
+
+        </div>
+    </div>
+     <div id="end" class="view ">
+
+        <div id="alan4">
+            
+            <div id="second" class="end">
+                
+            </div>
+            <div id="winner" class="end">
+                
+            </div>
+            <div id="third" class="end">
+                
+            </div>
+        </div>
+        <div id="againdiv">
+            <button id="again" class="buttons">Tekrar Oyna</button>
+        </div>
+    </div>
+    <div id="error" class="view">
+        <div class="error-container">
+            <h1>Oda Bulunamadı!</h1>
+            <p>Girdiğiniz oda ID'si geçersiz veya oda artık mevcut değil.</p>
+            <span class="home-button">Ana Sayfa</span>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="all.js"></script>
+
+</body>
+
+</html>
